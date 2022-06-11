@@ -1,0 +1,37 @@
+.task{
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  border-radius: .5rem;
+  padding: 1rem;
+
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+
+  >p {
+    color: var(--gray-100);
+  }
+
+  >svg {
+    color: var(--gray-300);
+    box-sizing: content-box;
+    padding: .31rem;
+    min-width: 18px;
+    min-height: 18px;
+  }
+
+  >svg:hover {
+    background: var(--gray-400);
+    border-radius: .2rem;
+    color: var(--danger);
+  }
+}
+
+.finished {
+  border: 1px solid var(--gray-500);
+
+  >p{
+    text-decoration: line-through;
+    color: var(--gray-300);
+  }
+}

@@ -8,7 +8,7 @@ export function InputNewTask() {
         <input type="text" placeholder="Adicione uma nova tarefa"/>
         <button type="submit" className={styles.buttonCreate}>
           Criar
-          <PlusCircle size={16}/>
+          <PlusCircle size={18}/>
         </button>
       </form>
     </div>
