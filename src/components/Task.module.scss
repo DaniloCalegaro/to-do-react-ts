@@ -6,21 +6,26 @@
 
   display: flex;
   align-items: flex-start;
-  gap: .75rem;
+  justify-content: space-between;
+  
+  .taskCheck {
+    display: flex;
+    gap: .75rem;
 
-  >p {
-    color: var(--gray-100);
+    p {
+      color: var(--gray-100);
+    }
+    
+    
   }
-
-  >svg {
+  svg {
     color: var(--gray-300);
     box-sizing: content-box;
     padding: .31rem;
     min-width: 18px;
     min-height: 18px;
   }
-
-  >svg:hover {
+  svg:hover {
     background: var(--gray-400);
     border-radius: .2rem;
     color: var(--danger);
@@ -30,8 +35,10 @@
 .finished {
   border: 1px solid var(--gray-500);
 
-  >p{
-    text-decoration: line-through;
-    color: var(--gray-300);
+  .taskCheck {
+    p{
+      text-decoration: line-through;
+      color: var(--gray-300);
+    }
   }
 }

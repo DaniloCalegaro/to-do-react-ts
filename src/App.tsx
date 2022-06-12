@@ -2,7 +2,10 @@ import { Header } from "./components/Header";
 import { InputNewTask } from "./components/InputNewTask";
 
 import styles from "./App.module.scss"
-import { Tasks } from "./components/ListTasks";
+import { ListTasks } from "./components/ListTasks";
+
+
+
 
 export function App() {
   return (
@@ -13,7 +16,7 @@ export function App() {
           <InputNewTask/>
         </div>
         <div className={styles.tasks}>
-          <Tasks/>
+          <ListTasks/>
         </div>
       </div>
     </div>
