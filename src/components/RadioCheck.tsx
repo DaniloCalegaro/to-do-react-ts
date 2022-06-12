@@ -1,13 +1,19 @@
 import styles from './RadioCheck.module.scss';
 
-import checked from "../assets/checked.svg";
-import unchecked from "../assets/unchecked.svg";
+import checkedBox from "../assets/checked.svg";
+import uncheckedBox from "../assets/unchecked.svg";
 
-export function RadioCheck() {
+interface Checked {
+  checked?: boolean;
+}
+
+export function RadioCheck({checked = false} : Checked) {
   return (
     <>
-    <img className={styles.radioUnCheck} src={unchecked} alt="Tarefa não finalizada" />
-    {/* <img className={styles.radioCheck} src={checked} alt="Tarefa não finalizada" /> */}
+    <img 
+      className={checked ? styles.radioCheck : styles.radioCheck} 
+      src={checked ? checkedBox : uncheckedBox} 
+      />
     </>
   )
 }

@@ -1,8 +1,6 @@
 import {Trash } from "phosphor-react";
 import styles from "./Task.module.scss";
 
-import checked from "../assets/checked.svg";
-import unchecked from "../assets/unchecked.svg";
 import { RadioCheck } from "./RadioCheck";
 
 interface Finished {
@@ -12,8 +10,8 @@ interface Finished {
 export function Task({finished = false }: Finished) {
   return (
     <article 
-      className={ finished ? `${styles.task} ${styles.finished}` :`${styles.task}`}>
-        <RadioCheck/>
+      className={ finished ? `${styles.task} ${styles.finished}` : styles.task}>
+        <RadioCheck checked = {finished}/>
         <p>
           Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
         </p>

@@ -12,7 +12,7 @@ export function Tasks() {
 
       <main className={styles.mainTasks}>
          {/* <NoTasks/> */}
-        <Task/>
+        <Task />
         <Task finished />
       </main>
      
