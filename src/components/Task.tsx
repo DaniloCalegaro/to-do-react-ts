@@ -15,8 +15,7 @@ export function Task({content, complete}: TasksProps) {
 
   function handleCheck() {   
     setStatusTask((state) => {
-      const toogleStatus = state ? false : true
-      return toogleStatus
+      return !state
     })
   }
   return (
