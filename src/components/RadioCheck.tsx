@@ -11,7 +11,7 @@ export function RadioCheck({checked = false} : Checked) {
   return (
     <>
     <img 
-      className={checked ? styles.radioCheck : styles.radioCheck} 
+      className={styles.radioCheck} 
       src={checked ? checkedBox : uncheckedBox} 
       />
     </>

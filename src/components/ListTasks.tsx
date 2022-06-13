@@ -1,23 +1,28 @@
+import {v4 as uuidv4} from "uuid";
 import { NoTasks } from "./NoTasks";
 import { Task } from "./Task";
 import styles from "./ListTasks.module.scss";
 
+interface Tasks {
+  id: string;
+  content: string;
+  complete: boolean;
+} 
 
-const tasksResponse= [
+const tasksResponse : Tasks[] = [
   {
-    id: 1,
-    content: 'Lavar a louça',
+    id: uuidv4(),
+    content: 'Projeto Exportação - Modelo Timberland',
     complete: false
   },
 
   {
-    id: 2,
+    id: uuidv4(),
     content: 'Estuda programação em React',
     complete: true
   }
 
 ]
-
 
 export function ListTasks() {
   return (
