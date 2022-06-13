@@ -2,6 +2,7 @@ import {v4 as uuidv4} from "uuid";
 import { NoTasks } from "./NoTasks";
 import { Task } from "./Task";
 import styles from "./ListTasks.module.scss";
+import { useState } from "react";
 
 interface Tasks {
   id: string;
