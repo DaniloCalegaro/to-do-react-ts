@@ -1,10 +1,15 @@
 import styles from './TaskCount.module.scss'
 
-export function TaskCount(){
+interface TaskCountProps {
+  totalTasks: number
+  totalTasksCompleted: number
+}
+
+export function TaskCount({totalTasks, totalTasksCompleted}: TaskCountProps){
   return (
     <header className={styles.headerTasks}>
-        <p>Tarefas criadas <span>0</span></p>
-        <p>Concluidas <span>2 de 5</span></p>
+        <p>Tarefas criadas <span>{totalTasks}</span></p>
+        <p>Concluidas <span>{totalTasksCompleted} de {totalTasks}</span></p>
       </header>
   )
 }

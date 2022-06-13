@@ -8,16 +8,20 @@ interface TasksProps {
   content: string
   complete: boolean
   onDeleteTask: (comment: string) => void
+  onCheckTask: (comment: string) => void
 }
 
 
-export function Task({content, complete, onDeleteTask}: TasksProps) {
+export function Task({content, complete, onDeleteTask, onCheckTask}: TasksProps) {
   const [statusTask, setStatusTask] = useState(complete)
 
   function handleCheck() {   
     setStatusTask((state) => {
-      return !state
+      const newState = !state
+      onCheckTask(content)
+      return newState
     })
+
   }
 
   function handleDeleteTask(){
