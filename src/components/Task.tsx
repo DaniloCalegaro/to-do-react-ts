@@ -7,16 +7,21 @@ import styles from "./Task.module.scss";
 interface TasksProps {
   content: string
   complete: boolean
+  onDeleteTask: (comment: string) => void
 }
 
 
-export function Task({content, complete}: TasksProps) {
+export function Task({content, complete, onDeleteTask}: TasksProps) {
   const [statusTask, setStatusTask] = useState(complete)
 
   function handleCheck() {   
     setStatusTask((state) => {
       return !state
     })
+  }
+
+  function handleDeleteTask(){
+    onDeleteTask(content)
   }
 
   const styleTask = statusTask ? `${styles.task} ${styles.finished}` : styles.task
@@ -30,7 +35,9 @@ export function Task({content, complete}: TasksProps) {
         />
         <p>{content}</p>
       </div>
-      <i><Trash/> </i>     
+      <i onClick={handleDeleteTask}>
+        <Trash/>
+      </i>     
     </article>
   )
 }

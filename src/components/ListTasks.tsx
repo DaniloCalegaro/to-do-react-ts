@@ -3,6 +3,7 @@ import { NoTasks } from "./NoTasks";
 import { Task } from "./Task";
 import styles from "./ListTasks.module.scss";
 import { useState } from "react";
+import { TaskCount } from "./TaskCount";
 
 interface Tasks {
   id: string;
@@ -26,27 +27,51 @@ const tasksResponse : Tasks[] = [
 ]
 
 export function ListTasks() {
-  return (
-    <div>
-      <header className={styles.headerTasks}>
-        <p>Tarefas criadas <span>0</span></p>
-        <p>Concluidas <span>2 de 5</span></p>
-      </header>
+  const [tasks, setTasks] = useState(tasksResponse)
 
-      <main className={styles.mainTasks}>
-        {/* <NoTasks/> */}
-        
-        {tasksResponse.map(task =>{
+  function deleteTask (contentTask: string) {
+    const tasksWithoutDeleteOne = tasks.filter(task => task.content !== contentTask)
+    setTasks(tasksWithoutDeleteOne)
+    //console.log(tasksWithoutDeleteOne)
+  }
+  
+  function thereTasks(tasks: Tasks[]) {
+    if(tasks.length === 0) {
+      return <NoTasks/>
+    } else {
+      tasks.map((task) =>{
+        return (
+          <Task
+            key={task.id}
+            content={task.content}
+            complete={task.complete}
+            onDeleteTask={deleteTask}
+          />
+        )
+      })
+    }
+  }
+
+  // console.log(thereTasks)
+
+  return (   
+    <main className={styles.mainTasks}>
+      <TaskCount/>
+
+      {/* <NoTasks/> */}
+
+      {tasks.length === 0 
+        ? <NoTasks/>
+        : tasks.map((task) =>{
           return (
             <Task
               key={task.id}
               content={task.content}
               complete={task.complete}
+              onDeleteTask={deleteTask}
             />
           )
-        })}
-      </main>
-     
-    </div>
+      })}
+    </main>
   )
 }
