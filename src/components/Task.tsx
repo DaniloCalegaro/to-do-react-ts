@@ -18,8 +18,12 @@ export function Task({content, complete}: TasksProps) {
       return !state
     })
   }
+
+  const styleTask = statusTask ? `${styles.task} ${styles.finished}` : styles.task
+
   return (
-    <article className={ statusTask? `${styles.task} ${styles.finished}` : styles.task}>
+    <article className={styleTask}>
+      
       <div className={styles.taskCheck} onClick={handleCheck}>
         <RadioCheck 
           checked = {statusTask}

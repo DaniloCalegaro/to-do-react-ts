@@ -6,10 +6,12 @@ interface CheckedProps {
 }
 
 export function RadioCheck({checked = false} : CheckedProps) {
+  const imgSrc = checked ? checkedBox : uncheckedBox
+
   return (
     <img 
       className={styles.radioCheck} 
-      src={checked ? checkedBox : uncheckedBox}
-      />
+      src={imgSrc}
+    />
   )
 }

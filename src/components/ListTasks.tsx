@@ -34,9 +34,8 @@ export function ListTasks() {
       </header>
 
       <main className={styles.mainTasks}>
-         {/* <NoTasks/> */}
-        {/* <Task />
-        <Task finished /> */}
+        {/* <NoTasks/> */}
+        
         {tasksResponse.map(task =>{
           return (
             <Task
