@@ -3,7 +3,6 @@ import { NoTasks } from "./NoTasks";
 import { Task } from "./Task";
 import styles from "./ListTasks.module.scss";
 import { useState } from "react";
-import { TaskCount } from "./TaskCount";
 
 interface Tasks {
   id: string;
@@ -31,53 +30,58 @@ export function ListTasks() {
   const [amountTask, setAmountTask] = useState(tasksResponse.length) 
   const [amountTaskComplete, setAmountTaskComplete] = useState(0)
 
-  function deleteTask(contentTask: string) {
-    const tasksWithoutDeleteOne = tasks.filter(task => task.content !== contentTask)
-    setTasks(tasksWithoutDeleteOne)
-    refreshCountTasks(tasksWithoutDeleteOne)
-  }
-
   function refreshCountTasks(tasks: Tasks[]) {
     setAmountTask(tasks.length)
   }
 
-  function refreshCountTasksComplete(content: string) {
-    console.log(content)
-    //const tasksComplete = tasks.filter(task => task.content !== content)
-    //setAmountTaskComplete(tasksComplete.length)
-    const tasksComplete = tasks.map(task => {
-      if(task.content === content) {
-        !task.complete
-        console.log(!task.complete)
+  function refreshCountTasksComplete(tasks: Tasks[]) {
+    const sumCountTaskComplete = tasks.reduce((sum, task) => {
+      return sum = task.complete ? sum + 1 : sum
+    }, 0)
+    setAmountTaskComplete(sumCountTaskComplete)
+  }
+
+  function deleteTask(contentTask: string) {
+    const tasksWithoutDeleteOne = tasks.filter(task => task.content !== contentTask)
+    setTasks(tasksWithoutDeleteOne)
+    refreshCountTasks(tasksWithoutDeleteOne)
+    refreshCountTasksComplete(tasksWithoutDeleteOne)
+  }
+
+  function completeTask(content: string) {
+    const tasksRefreshed = tasks.map(task => {
+      if(task.content ===content) {
+        task.complete = !task.complete
       }
-      
-      return task.complete
+      return task
     })
-    //console.log(tasksComplete)
+    setTasks(tasksRefreshed)
+    refreshCountTasksComplete(tasksRefreshed)
   }
 
   return (
-    <main className={styles.mainTasks}>
-      <TaskCount 
-        totalTasks={amountTask}  
-        totalTasksCompleted={amountTaskComplete}    
-      />
+    <div>
+      <header className={styles.headerTasks}>
+          <p>Tarefas criadas <span>{amountTask}</span></p>
+          <p>Concluidas <span>{amountTaskComplete} de {amountTask}</span></p>
+      </header>
 
-      {/* <NoTasks/> */}
+      <main className={styles.mainTasks}>
+        {tasks.length === 0
+          ? <NoTasks />
+          : tasks.map((task) => {
+            return (
+              <Task
+                key={task.id}
+                content={task.content}
+                complete={task.complete}
+                onDeleteTask={deleteTask}
+                onCheckTask={completeTask}
+              />
+            )
+          })}
+      </main>
+    </div>
 
-      {tasks.length === 0
-        ? <NoTasks />
-        : tasks.map((task) => {
-          return (
-            <Task
-              key={task.id}
-              content={task.content}
-              complete={task.complete}
-              onDeleteTask={deleteTask}
-              onCheckTask={refreshCountTasksComplete}
-            />
-          )
-        })}
-    </main>
   )
 }

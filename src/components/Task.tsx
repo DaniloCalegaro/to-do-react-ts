@@ -18,10 +18,9 @@ export function Task({content, complete, onDeleteTask, onCheckTask}: TasksProps)
   function handleCheck() {   
     setStatusTask((state) => {
       const newState = !state
-      onCheckTask(content)
       return newState
     })
-
+    onCheckTask(content)
   }
 
   function handleDeleteTask(){
