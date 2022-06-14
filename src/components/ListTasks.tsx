@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { NoTasks } from "./NoTasks";
 import { Task } from "./Task";
 import styles from "./ListTasks.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Tasks {
   id: string;
@@ -27,7 +27,7 @@ const tasksResponse: Tasks[] = [
 
 export function ListTasks() {
   const [tasks, setTasks] = useState(tasksResponse)
-  const [amountTask, setAmountTask] = useState(tasksResponse.length) 
+  const [amountTask, setAmountTask] = useState(0) 
   const [amountTaskComplete, setAmountTaskComplete] = useState(0)
 
   function refreshCountTasks(tasks: Tasks[]) {
@@ -44,8 +44,6 @@ export function ListTasks() {
   function deleteTask(contentTask: string) {
     const tasksWithoutDeleteOne = tasks.filter(task => task.content !== contentTask)
     setTasks(tasksWithoutDeleteOne)
-    refreshCountTasks(tasksWithoutDeleteOne)
-    refreshCountTasksComplete(tasksWithoutDeleteOne)
   }
 
   function completeTask(content: string) {
@@ -56,8 +54,12 @@ export function ListTasks() {
       return task
     })
     setTasks(tasksRefreshed)
-    refreshCountTasksComplete(tasksRefreshed)
   }
+
+  useEffect(()=> {
+    refreshCountTasks(tasks)
+    refreshCountTasksComplete(tasks)
+  })
 
   return (
     <div>
