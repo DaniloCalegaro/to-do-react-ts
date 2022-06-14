@@ -92,7 +92,7 @@ export function ContainerTasks() {
 
     <div className={styles.countTasks}>
         <p>Tarefas criadas <span>{amountTask}</span></p>
-        <p>Concluidas <span>{amountTaskComplete} de {amountTask}</span></p>
+        <p>Concluídas <span>{amountTaskComplete} de {amountTask}</span></p>
     </div>
 
     <main className={styles.containerTasks}>
