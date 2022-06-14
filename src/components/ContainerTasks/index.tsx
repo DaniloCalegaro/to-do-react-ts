@@ -69,7 +69,7 @@ export function ContainerTasks() {
   useEffect(()=> {
     refreshCountTasks(tasks)
     refreshCountTasksComplete(tasks)
-  })
+  }, [tasks])
 
   return (
     <div className={styles.mainTasks}>
