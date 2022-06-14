@@ -26,6 +26,7 @@
         padding: .875rem;
         color: var(--gray-100);
         @extend %borderRadiusElement;
+        cursor: pointer;
   
         display: flex;
         align-items: center;

@@ -33,10 +33,12 @@ export function Task({id, content, complete, onDeleteTask, onCheckTask}: TasksPr
   return (
     <article className={styleTask}>
       
-      <div className={styles.taskCheck} onClick={handleCheck}>
-        <RadioCheck 
-          checked = {statusTask}
-        />
+      <div className={styles.taskCheckAndCheck} >
+        <div className={styles.taskCheck} onClick={handleCheck}>
+          <RadioCheck 
+            checked = {statusTask}
+          />
+        </div>
         <p>{content}</p>
       </div>
       <i onClick={handleDeleteTask}>

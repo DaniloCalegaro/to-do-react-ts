@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { NoTasks } from "./NoTasks";
 import { Task } from "./Task";
 import styles from "./ContainerTasks.module.scss";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, InvalidEvent, useEffect, useState } from "react";
 import { PlusCircle } from "phosphor-react";
 
 interface Tasks {
@@ -11,20 +11,7 @@ interface Tasks {
   complete: boolean;
 }
 
-const tasksResponse: Tasks[] = [
-  {
-    id: uuidv4(),
-    content: 'Projeto Exportação - Modelo Timberland',
-    complete: false
-  },
-
-  {
-    id: uuidv4(),
-    content: 'Estuda programação em React',
-    complete: true
-  }
-
-]
+const tasksResponse: Tasks[] = []
 
 export function ContainerTasks() {
   const [tasks, setTasks] = useState(tasksResponse)
@@ -56,6 +43,7 @@ export function ContainerTasks() {
   }
 
   function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('')
     setNewTaskText(event.target.value)
   }
 
@@ -74,6 +62,10 @@ export function ContainerTasks() {
     setTasks(tasksRefreshed)
   }
 
+  function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>){
+    event.target.setCustomValidity('É obrigatório inserir uma tarefa')
+  }
+
   useEffect(()=> {
     refreshCountTasks(tasks)
     refreshCountTasksComplete(tasks)
@@ -88,6 +80,8 @@ export function ContainerTasks() {
           placeholder="Adicione uma nova tarefa"
           value={newTaskText}
           onChange={handleNewTaskChange}
+          onInvalid={handleNewTaskInvalid}
+          required
         />
         <button type="submit" className={styles.buttonCreate}>
           Criar
