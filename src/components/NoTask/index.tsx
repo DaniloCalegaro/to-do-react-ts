@@ -1,5 +1,5 @@
-import styles from "./NoTasks.module.scss";
-import clipboard from "../assets/Clipboard.svg"
+import styles from "./styles.module.scss";
+import clipboard from "../../assets/Clipboard.svg"
 
 
 export function NoTasks() {

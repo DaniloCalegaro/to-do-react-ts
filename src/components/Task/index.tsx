@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import {Trash } from "phosphor-react";
-import { RadioCheck } from "./RadioCheck";
-import styles from "./Task.module.scss";
+import { RadioCheck } from "../RadioCheck";
+import styles from "./styles.module.scss";
 
 interface TasksProps {
   id: string

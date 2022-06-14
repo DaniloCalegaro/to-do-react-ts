@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
-import { NoTasks } from "./NoTasks";
-import { Task } from "./Task";
-import styles from "./ContainerTasks.module.scss";
+import { NoTasks } from "../NoTask";
+import { Task } from "../Task";
+import styles from "./styles.module.scss";
 import { ChangeEvent, FormEvent, InvalidEvent, useEffect, useState } from "react";
 import { PlusCircle } from "phosphor-react";
 

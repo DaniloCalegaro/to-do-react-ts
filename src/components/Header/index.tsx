@@ -1,6 +1,6 @@
-import styles from "./Header.module.scss"
+import styles from "./styles.module.scss"
 
-import logoToDo from "../assets/logoToDo.svg"
+import logoToDo from "../../assets/logoToDo.svg"
 
 export function Header() {
   return (
