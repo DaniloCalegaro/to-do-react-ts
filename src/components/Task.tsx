@@ -5,6 +5,7 @@ import { RadioCheck } from "./RadioCheck";
 import styles from "./Task.module.scss";
 
 interface TasksProps {
+  id: string
   content: string
   complete: boolean
   onDeleteTask: (comment: string) => void
@@ -12,7 +13,7 @@ interface TasksProps {
 }
 
 
-export function Task({content, complete, onDeleteTask, onCheckTask}: TasksProps) {
+export function Task({id, content, complete, onDeleteTask, onCheckTask}: TasksProps) {
   const [statusTask, setStatusTask] = useState(complete)
 
   function handleCheck() {   
@@ -20,11 +21,11 @@ export function Task({content, complete, onDeleteTask, onCheckTask}: TasksProps)
       const newState = !state
       return newState
     })
-    onCheckTask(content)
+    onCheckTask(id)
   }
 
   function handleDeleteTask(){
-    onDeleteTask(content)
+    onDeleteTask(id)
   }
 
   const styleTask = statusTask ? `${styles.task} ${styles.finished}` : styles.task

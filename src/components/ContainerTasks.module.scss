@@ -1,0 +1,73 @@
+%borderRadiusElement {
+  border-radius: 6px;
+}
+.mainTasks {
+  .inputNewTask {
+    transform: translateY(-50%);
+
+    >form{
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+  
+      input {
+        background: var(--gray-500);
+        border: 0;
+        padding: .875rem;
+        color: var(--gray-100);
+        @extend %borderRadiusElement;
+  
+        flex: 1;
+      }
+  
+      .buttonCreate {
+        background: var(--blue-dark);
+        border: 0;
+        padding: .875rem;
+        color: var(--gray-100);
+        @extend %borderRadiusElement;
+  
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+  
+        transition: background 0.1s;
+      }
+  
+      button:hover{
+        background: var(--blue);
+      }
+    }
+  }
+
+  .countTasks {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+  
+    >p {
+      color: var(--blue);
+      font-weight: bold;
+      font-size: 14px;
+  
+      span{
+        background: var(--gray-400);
+        color: var(--gray-100);
+        font-weight: bold;
+        font-size: 12px;
+        padding: .125rem .5rem;
+        margin-left: .5rem;
+        border-radius: 1rem;
+      }
+    }
+    >p:last-child {
+      color: var(--purple);
+    }
+  }
+  
+  .containerTasks {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+}
