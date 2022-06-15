@@ -11,10 +11,8 @@ interface Tasks {
   complete: boolean;
 }
 
-const tasksResponse: Tasks[] = []
-
 export function ContainerTasks() {
-  const [tasks, setTasks] = useState(tasksResponse)
+  const [tasks, setTasks] = useState<Tasks[]>([])
   const [amountTask, setAmountTask] = useState(0) 
   const [amountTaskComplete, setAmountTaskComplete] = useState(0)
   const [newTaskText, setNewTaskText] = useState('')
